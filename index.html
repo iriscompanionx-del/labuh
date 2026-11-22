@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Labuh – Hijab try-on</title>
+<meta name="theme-color" content="#141A38">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Labuh">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+  <section class="stage" id="stage">
+    <canvas id="c" aria-label="Live try-on preview"></canvas>
+    <p id="status">Tap Camera or Photo to start.</p>
+  </section>
+
+  <section class="sheet">
+    <div class="panel" id="p-style"><div class="strip" id="items"></div></div>
+    <div class="panel" id="p-colour" hidden><div class="strip" id="swatches"></div></div>
+    <div class="panel" id="p-fit" hidden>
+      <div class="fit">
+        <label>X<input id="f-dx" type="range" min="-50" max="50" value="0"></label>
+        <label>Y<input id="f-dy" type="range" min="-50" max="50" value="0"></label>
+        <label>Size<input id="f-s" type="range" min="50" max="200" value="100"></label>
+        <label>Tilt<input id="f-r" type="range" min="-30" max="30" value="0"></label>
+      </div>
+    </div>
+
+    <nav class="tabs">
+      <button data-tab="style" aria-selected="true">Style</button>
+      <button data-tab="colour" aria-selected="false">Colour</button>
+      <button data-tab="fit" aria-selected="false">Fit</button>
+      <button id="reset" class="reset">Reset</button>
+    </nav>
+
+    <div class="actions">
+      <button id="cam" class="btn primary">Camera</button>
+      <label class="btn">Photo<input id="pick" type="file" accept="image/*" hidden></label>
+      <button id="save" class="btn">Save</button>
+    </div>
+  </section>
+</main>
+<video id="v" playsinline muted autoplay></video>
+<script type="module" src="app.js"></script>
+</body>
+</html>
