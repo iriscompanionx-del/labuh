@@ -1,0 +1,49 @@
+:root{
+  --bg:#EEF0F6; --ink:#1E2547; --mute:#5A618A; --line:#D3D7E6; --card:#FFFFFF;
+  --indigo:#26305A; --gold:#E8A33D; --radius:14px;
+  --head:"Bricolage Grotesque",system-ui,sans-serif; --body:"Figtree",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.4 var(--body);overscroll-behavior:none;-webkit-text-size-adjust:100%}
+.app{height:100dvh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden;
+  padding-top:env(safe-area-inset-top,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 6px}
+h1{font:700 26px/1 var(--head);letter-spacing:-.01em;margin:0;color:var(--indigo)}
+button,select,.btn{font:inherit;color:inherit}
+.ghost{background:none;border:1px solid var(--line);border-radius:999px;padding:8px 14px;min-height:40px}
+.stage{display:grid;place-items:center;min-height:0;padding:4px 16px;position:relative}
+canvas{max-width:100%;max-height:100%;aspect-ratio:3/4;width:auto;height:auto;border-radius:var(--radius);background:#D9DCEA;touch-action:none;display:block}
+#hint{position:absolute;left:0;right:0;bottom:10px;margin:0;text-align:center;font-size:13px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5);pointer-events:none;padding:0 28px}
+.sheet{background:var(--card);border-radius:20px 20px 0 0;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
+  max-height:42dvh;overflow-y:auto;box-shadow:0 -6px 24px rgba(30,37,71,.08)}
+.actions{display:grid;grid-template-columns:1.2fr 1.2fr 1fr;gap:8px;margin-bottom:10px}
+.btn{display:grid;place-items:center;min-height:44px;border:1px solid var(--line);border-radius:12px;background:#fff;font-weight:600;cursor:pointer;text-align:center;padding:0 8px}
+.btn.primary{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.tabs button{flex:1;background:none;border:0;border-bottom:3px solid transparent;padding:10px 0;min-height:44px;color:var(--mute);font-weight:600}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--gold)}
+.panel[hidden]{display:none}
+.styles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.styles button{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:10px 6px;min-height:44px;font-weight:600}
+.styles button[aria-pressed=true]{border-color:var(--indigo);background:var(--indigo);color:#fff}
+.note{color:var(--mute);font-size:14px;margin:10px 0 0}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px;font-weight:600}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{background:#fff;border:0;padding:8px 12px;min-height:40px}
+.seg button[aria-pressed=true]{background:var(--indigo);color:#fff}
+select{min-height:40px;border:1px solid var(--line);border-radius:10px;padding:0 10px;background:#fff;font-size:16px}
+.swatches{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:12px}
+.sw{aspect-ratio:1;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);position:relative;padding:0;min-width:36px}
+.sw[aria-pressed=true]{box-shadow:0 0 0 3px var(--indigo)}
+.sw.fit::after{content:"";position:absolute;right:-2px;top:-2px;width:11px;height:11px;border-radius:50%;background:var(--gold);border:2px solid #fff}
+.slider{display:grid;grid-template-columns:48px 1fr;align-items:center;gap:10px;margin-bottom:8px;font-weight:600}
+input[type=range]{width:100%;accent-color:var(--indigo);min-height:32px}
+.looks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.looks.two{grid-template-columns:1fr 1fr}
+.look{border:2px solid transparent;border-radius:10px;overflow:hidden;padding:0;background:none}
+.look.sel{border-color:var(--gold)}
+.look img{display:block;width:100%;height:auto}
+.look span{display:block;font-size:12px;color:var(--mute);padding:4px 2px}
+@media (prefers-reduced-motion:no-preference){.tabs button,.styles button{transition:background .15s,border-color .15s}}
+button:focus-visible,select:focus-visible,input:focus-visible,label:focus-within{outline:3px solid var(--gold);outline-offset:2px}
